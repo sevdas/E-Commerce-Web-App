@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a e-commerce website capstone project where the users can come to the site, look at the images available and choose some of them to be printed and shipped to them. Images can be favorite and added to the card.. It's all frond-end build dynamically using React framework. 
+This is a e-commerce website capstone project where the users can come to the site, look at the images available and choose some of them to be printed and shipped to them. Images can be favorite and added to the card..
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
