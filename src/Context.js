@@ -3,10 +3,15 @@ import React, { useState, useEffect } from "react";
 const MyContext = React.createContext();
 
 function ContextProvider({ children }) {
+  //Add state to the context and pass it through the provider
   const [allPhotos, setAllPhotos] = useState([]);
 
   const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
-  const url = `https://api.unsplash.com//search/photos?query=arts-culture&client_id=${ACCESS_KEY}`;
+
+  const url =
+    "https://api.unsplash.com/photos?client_id=" +
+    ACCESS_KEY +
+    "&query=arts-culture";
 
   // As soon as the ContextProvider component renders, get the JSON data from the api.
   //Save data to state
@@ -17,9 +22,7 @@ function ContextProvider({ children }) {
       setAllPhotos(data);
     };
     getData();
-  }, []);
-
-  console.log(allPhotos);
+  }, [url]);
 
   return (
     <MyContext.Provider value={{ allPhotos }}>{children}</MyContext.Provider>
