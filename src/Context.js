@@ -8,10 +8,9 @@ function ContextProvider({ children }) {
 
   const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
 
-  const url =
-    "https://api.unsplash.com/photos?client_id=" +
-    ACCESS_KEY +
-    "&query=arts-culture";
+  const url = `https://api.unsplash.com/photos?client_id=${
+    ACCESS_KEY + "&query=arts-culture" + "&per_page=100"
+  }`;
 
   // As soon as the ContextProvider component renders, get the JSON data from the api.
   //Save data to state
