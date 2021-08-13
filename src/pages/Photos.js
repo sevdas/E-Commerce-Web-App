@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { MyContext } from "../Context";
+import { PhotosContext } from "../Context";
 import Image from "../components/Image";
 import { getClass } from "../utils";
 
 export default function Photos() {
-  const { allPhotos } = useContext(MyContext);
+  const { allPhotos } = useContext(PhotosContext);
   console.log("all", allPhotos);
 
   const imageElements = allPhotos.map((img, idx) => (

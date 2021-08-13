@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { PhotosContext } from "../Context";
 
 export default function Image({ className, img }) {
   //Track the hover state
   const [hovered, setHovered] = useState(false);
+  const { togglePhotos } = useContext(PhotosContext);
 
   //Display icons on hover
   const heartIcon = hovered && <i className="ri-heart-line"></i>;

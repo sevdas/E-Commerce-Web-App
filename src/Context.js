@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { url } from "./constants/matcher";
 
-const MyContext = React.createContext();
+const PhotosContext = React.createContext();
 
-function ContextProvider({ children }) {
+function PhotosContextProvider({ children }) {
   //Add state to the context and pass it through the provider
   const [allPhotos, setAllPhotos] = useState([]);
 
-  // As soon as the ContextProvider component renders, get the JSON data from the api.
+  // As soon as the PhotosContextProvider component renders, get the JSON data from the api.
   //Save data to state
   useEffect(() => {
     const getData = async () => {
@@ -18,9 +18,23 @@ function ContextProvider({ children }) {
     getData();
   }, []);
 
+  const togglePhotos = (id) => {
+    const allPhotosArr = allPhotos.map((photo) => {
+      if (photo.id === id) {
+        console.log("photo", photo);
+        console.log("liked", !photo.liked_by_user);
+        return { ...photo, liked_by_user: !photo.liked_by_user };
+      }
+      return photo;
+    });
+    setAllPhotos(allPhotosArr);
+  };
+
   return (
-    <MyContext.Provider value={{ allPhotos }}>{children}</MyContext.Provider>
+    <PhotosContext.Provider value={{ allPhotos, togglePhotos }}>
+      {children}
+    </PhotosContext.Provider>
   );
 }
 
-export { ContextProvider, MyContext };
+export { PhotosContextProvider, PhotosContext };
