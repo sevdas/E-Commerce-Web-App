@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-This is a capstone project, mock e-commerce site. The aim of this capstone project is to combine all cool react features such as React Router, React Hooks, Custom Hooks, Context and Prop Types.
+This is mock e-commerce site. The aim of this capstone project is to combine all cool react features such as React Router, React Hooks, Custom Hooks, Context and Prop Types.
 
-User Stories:
+### User Stories:
 
 - As a user, I'd like to buy printed theme of arts & culture images.
 - As a user, I'd like to be able to favorite the images.
@@ -13,8 +13,6 @@ User Stories:
 - As a user, I'd like to remove the images from the card.
 - As a user, I'd like to see the grand total of the products added to the card.
 - As a user, I'd like to be able to checkout.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
