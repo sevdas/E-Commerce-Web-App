@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { PhotosContext } from "../Context";
+import PropTypes from "prop-types";
 
 export default function Image({ className, img }) {
   //Track the hover state
@@ -27,7 +28,17 @@ export default function Image({ className, img }) {
 
   const addIcon = hovered && <i className="ri-add-box-line"></i>;
 
-  console.log("img", img.liked_by_user);
+  //Ensure component is using the correct data type.
+  Image.propTypes = {
+    className: PropTypes.string,
+    img: PropTypes.shape({
+      //Specify properties
+      id: PropTypes.string.isRequired,
+      urls: PropTypes.object.isRequired,
+      liked_by_user: PropTypes.bool,
+    }),
+  };
+
   return (
     <div
       className={`${className} image-container`}
