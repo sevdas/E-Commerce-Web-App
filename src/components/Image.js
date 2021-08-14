@@ -13,6 +13,7 @@ export default function Image({ className, img }) {
   );
   const addIcon = hovered && <i className="ri-add-box-line"></i>;
 
+  console.log("img", img.liked_by_user);
   return (
     <div
       className={`${className} image-container`}
@@ -20,7 +21,14 @@ export default function Image({ className, img }) {
       onMouseLeave={() => setHovered(false)}
     >
       <img src={img.urls.thumb} alt={img.description} className="image-grid" />
-      {heartIcon}
+      {!img.liked_by_user ? (
+        heartIcon
+      ) : (
+        <i
+          className="ri-heart-fill"
+          onClick={() => toggleLikedPhotos(img.id)}
+        ></i>
+      )}
       {addIcon}
     </div>
   );

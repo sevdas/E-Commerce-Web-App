@@ -29,6 +29,7 @@ function PhotosContextProvider({ children }) {
     });
     //Set state to the updated array.
     setAllPhotos(allPhotosArr);
+    console.log("allPhotos", allPhotosArr);
   };
 
   return (
