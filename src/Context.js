@@ -18,20 +18,21 @@ function PhotosContextProvider({ children }) {
     getData();
   }, []);
 
-  const togglePhotos = (id) => {
+  const toggleLikedPhotos = (id) => {
+    //Avoid updating state directly
     const allPhotosArr = allPhotos.map((photo) => {
+      //Update the array of allPhotos by flipping liked property of photo with matching id
       if (photo.id === id) {
-        console.log("photo", photo);
-        console.log("liked", !photo.liked_by_user);
         return { ...photo, liked_by_user: !photo.liked_by_user };
       }
       return photo;
     });
+    //Set state to the updated array.
     setAllPhotos(allPhotosArr);
   };
 
   return (
-    <PhotosContext.Provider value={{ allPhotos, togglePhotos }}>
+    <PhotosContext.Provider value={{ allPhotos, toggleLikedPhotos }}>
       {children}
     </PhotosContext.Provider>
   );

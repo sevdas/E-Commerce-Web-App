@@ -4,10 +4,13 @@ import { PhotosContext } from "../Context";
 export default function Image({ className, img }) {
   //Track the hover state
   const [hovered, setHovered] = useState(false);
-  const { togglePhotos } = useContext(PhotosContext);
+  const { toggleLikedPhotos } = useContext(PhotosContext);
 
   //Display icons on hover
-  const heartIcon = hovered && <i className="ri-heart-line"></i>;
+  const heartIcon = hovered && (
+    //Event handler is receiving an event as a parameter not an id.
+    <i className="ri-heart-line" onClick={() => toggleLikedPhotos(img.id)}></i>
+  );
   const addIcon = hovered && <i className="ri-add-box-line"></i>;
 
   return (
