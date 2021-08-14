@@ -6,11 +6,25 @@ export default function Image({ className, img }) {
   const [hovered, setHovered] = useState(false);
   const { toggleLikedPhotos } = useContext(PhotosContext);
 
-  //Display icons on hover
-  const heartIcon = hovered && (
-    //Event handler is receiving an event as a parameter not an id.
-    <i className="ri-heart-line" onClick={() => toggleLikedPhotos(img.id)}></i>
-  );
+  //Display icons on hover & filled heart on click
+  const heartIcon = () => {
+    if (img.liked_by_user) {
+      return (
+        <i
+          className="ri-heart-fill"
+          onClick={() => toggleLikedPhotos(img.id)}
+        ></i>
+      );
+    } else if (hovered) {
+      return (
+        <i
+          className="ri-heart-line"
+          onClick={() => toggleLikedPhotos(img.id)}
+        ></i>
+      );
+    }
+  };
+
   const addIcon = hovered && <i className="ri-add-box-line"></i>;
 
   console.log("img", img.liked_by_user);
@@ -21,14 +35,7 @@ export default function Image({ className, img }) {
       onMouseLeave={() => setHovered(false)}
     >
       <img src={img.urls.thumb} alt={img.description} className="image-grid" />
-      {!img.liked_by_user ? (
-        heartIcon
-      ) : (
-        <i
-          className="ri-heart-fill"
-          onClick={() => toggleLikedPhotos(img.id)}
-        ></i>
-      )}
+      {heartIcon()}
       {addIcon}
     </div>
   );
