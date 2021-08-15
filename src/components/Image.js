@@ -6,6 +6,7 @@ export default function Image({ className, img }) {
   //Track the hover state
   const [hovered, setHovered] = useState(false);
   const { toggleLikedPhotos } = useContext(PhotosContext);
+  const { addImagesToCard } = useContext(PhotosContext);
 
   //Display icons on hover & filled heart on click
   const heartIcon = () => {
@@ -26,7 +27,9 @@ export default function Image({ className, img }) {
     }
   };
 
-  const addIcon = hovered && <i className="ri-add-box-line"></i>;
+  const addIcon = hovered && (
+    <i className="ri-add-box-line" onClick={() => addImagesToCard(img)}></i>
+  );
 
   //Ensure component is using the correct data type.
   Image.propTypes = {
